@@ -5,9 +5,9 @@ import java.util.Deque;
 import java.util.Iterator;
 
 /**
- * ºó½øÏÈ³ö•AÕ»
+ * åè¿›å…ˆå‡ºæ—³æ ˆ
  * @author ZhangRui
- * 2017Äê10ÔÂ20ÈÕ,ÏÂÎç11:13:19
+ * 2017å¹´10æœˆ20æ—¥,ä¸‹åˆ11:13:19
  */
 public class Stack {
 
