@@ -63,3 +63,5 @@ target
 bin/
 #README.md
 *.iml
+algs4-data/
+production/

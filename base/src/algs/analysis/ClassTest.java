@@ -1,6 +1,4 @@
-package com.algs4.alganaly;
-
-import analysis.ThreeSum;
+package algs.analysis;
 
 /**
  * 测试
