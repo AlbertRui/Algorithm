@@ -12,7 +12,7 @@ public class SortTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SortAnalyse sortAnalyse = new SortAnalyse();
+		com.algs4.sort.SortAnalyse sortAnalyse = new com.algs4.sort.SortAnalyse();
 		char[] num = sortAnalyse.getArray();
 		sortAnalyse.printNum(num);
 //		sortAnalyse.selection(num);

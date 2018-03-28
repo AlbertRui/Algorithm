@@ -74,49 +74,6 @@ public class SortAnalyse {
 		}
 	}
 
-	/**
-	 * 直接插入排序法，降序
-	 * 
-	 * @param num
-	 */
-	public void insertDirect(char[] num) {
-		System.out.println("==========直接插入排序法降序==========");
-		for (int i = 1; i < num.length; i++) {
-			int j = i;
-			char insertWait = num[i];
-			while (j > 0 && insertWait > num[j - 1]) {
-				num[j] = num[j - 1];
-				j--;
-			}
-			num[j] = insertWait;
-		}
-	}
-
-	/**
-	 * 二分（折半）插入排序,升序
-	 * 
-	 * @param num
-	 */
-	public void insertMiddle(char[] num) {
-		System.out.println("================二分（折半）插入排序,升序================");
-		for (int i = 1; i < num.length; i++) {
-			int left = 0;
-			int right = i - 1;
-			char temp = num[i];
-			while (left <= right) { // 利用折半查找插入位置
-				int mid = (left + right) / 2; // 取中点
-				if (num[mid] > temp) // 插入值小于中点值
-					right = mid - 1; // 向左缩小区间
-				else
-					left = mid + 1; // 向右缩小区间
-			}
-			// left即为找到的要插入的位置，所以下边的循环将left-(i-1)位置的元素依次向后移动
-			for (int j = i - 1; j >= left; j--) {
-				num[j + 1] = num[j];
-			}
-			num[left] = temp; // 将temp插入到left位置
-		}
-	}
 
 	/**
 	 * 希尔排序法，降序
