@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @date 2018-03-28 19:04
  */
 @SuppressWarnings("ALL")
-public class Stack<Item> implements Iterable<Item>{
+public class Stack<Item> implements Iterable<Item> {
 
     //栈顶，最近添加的元素
     private Node first;
@@ -75,6 +75,20 @@ public class Stack<Item> implements Iterable<Item>{
 
     }
 
+    /**
+     * 打印栈
+     */
+    public void printStack() {
+        for (Node node = first; node != null; node = node.next) {
+            System.out.println(node.item);
+        }
+    }
+
+    /**
+     * 返回一个可以迭代栈中元素的迭代器
+     *
+     * @return
+     */
     @Override
     public Iterator<Item> iterator() {
         return new ListIterator();
