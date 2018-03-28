@@ -3,6 +3,8 @@ package algs.stack.list;
 import java.util.Iterator;
 
 /**
+ * 基于链表实现下压堆栈
+ *
  * @author AlbertRui
  * @date 2018-03-28 19:04
  */
@@ -85,6 +87,10 @@ public class Stack<Item> implements Iterable<Item>{
         @Override
         public boolean hasNext() {
             return current != null;
+        }
+
+        public void remove() {
+
         }
 
         @Override
