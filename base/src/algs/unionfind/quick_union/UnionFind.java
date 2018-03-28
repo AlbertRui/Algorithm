@@ -1,8 +1,8 @@
-package algs.unionfind;
+package algs.unionfind.quick_union;
 
 /**
  * 并查集基本实现
- * quick-find
+ * quick-union
  *
  * @author AlbertRui
  * @date 2018-03-28 21:01
@@ -55,7 +55,10 @@ public class UnionFind {
      * @return
      */
     public int find(int p) {
-        return id[p];
+        while (p != id[p]) {
+            p = id[p];
+        }
+        return p;
     }
 
     /**
@@ -66,20 +69,17 @@ public class UnionFind {
      */
     public void union(int p, int q) {
 
-        int pId = find(p);
-        int qId = find(q);
+        //将p和q的根节点统一
+        int pRoot = find(p);
+        int qRoot = find(q);
 
         //如果p和q已经在相同的分量之中则不需要采取任何行动
-        if (pId == qId) {
+        if (pRoot == qRoot) {
             return;
         }
 
         //将p的分量名称重命名为q的分量名称
-        for (int i = 0; i < id.length; i++) {
-            if (id[i] == pId) {
-                id[i] = qId;
-            }
-        }
+        id[pRoot] = qRoot;
 
         count--;
 
