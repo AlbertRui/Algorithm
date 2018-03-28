@@ -1,4 +1,4 @@
-package com.algs4.queuetest;
+package algs.queue.array;
 
 /**
  * ∂”¡–≤‚ ‘¿‡
