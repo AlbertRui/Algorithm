@@ -1,6 +1,6 @@
 package algs.main;
 
-import algs.heap.sort.HeapSort;
+import algs.heap.sort.HeapSort1;
 import algs.util.SortTestHelper;
 
 /**
@@ -22,7 +22,7 @@ public class Main {
         Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100000);
 //        Integer[] arr = SortTestHelper.generateNearlyOrderedArray(10000, 10);
 //        SelectionSort.sort(arr);
-        SortTestHelper.testSort(HeapSort.class, "heapSort", new Class[]{Comparable[].class}, new Object[]{arr});
+        SortTestHelper.testSort(HeapSort1.class, "sort2", new Class[]{Comparable[].class}, new Object[]{arr});
         SortTestHelper.printArrayLn(arr, 20000);
     }
 }

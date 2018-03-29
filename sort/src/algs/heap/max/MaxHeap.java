@@ -76,6 +76,8 @@ public class MaxHeap<Item extends Comparable> {
         assert count > 0;
         Item ret = data[1];
         swap(1, count--);
+        //防止对象游离
+        data[count + 1] = null;
         sink(1);
         return ret;
     }
