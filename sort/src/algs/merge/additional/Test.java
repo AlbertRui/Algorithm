@@ -17,7 +17,7 @@ public class Test {
      * @param upperBound
      * 欲归并数组段的最大下标
      */
-    char[] array = SortTestHelper.getArray();
+    Character[] array = SortTestHelper.getArray();
 
     public void recursiveMergeSort(char[] workSpace, int lowerBound, int upperBound) {
         if (lowerBound == upperBound) { // 该段只有一个元素，不用排序

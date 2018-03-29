@@ -173,8 +173,8 @@ public class SortTestHelper {
      *
      * @return
      */
-    public static char[] getArray() {
-        char[] num = new char[11];
+    public static Character[] getArray() {
+        Character[] num = new Character[11];
         File file = null;
         FileReader fileReader = null;
         try {
@@ -202,7 +202,7 @@ public class SortTestHelper {
      *
      * @param num
      */
-    public static void printNum(char[] num) {
+    public static void printNum(Character[] num) {
         for (char c : num) {
             System.out.print(c + " ");
         }

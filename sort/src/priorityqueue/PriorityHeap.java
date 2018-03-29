@@ -1,110 +1,110 @@
-package com.algs4.priorityqueue;
-
-import java.util.Arrays;
-
-/**
- * ÓÅÏÈ¶ÓÁÐÀà£¨×î´óÓÅÏÈ¶ÓÁÐ£©
- * @author http://www.cnblogs.com/luoxn28/p/5616101.html
- * @date 2017Äê10ÔÂ22ÈÕ
- * @time ÏÂÎç10:40:22
- */
-public class PriorityHeap {
-
-	// ------------------------------ Instance Variables
-
-	private int[] arr;
-	private int size;
-
-	// ------------------------------ Constructors
-
-	/**
-	 * ÓÅÏÈ¶ÓÁÐÊý×éÄ¬ÈÏ´óÐ¡Îª64
-	 */
-	public PriorityHeap() {
-		this(64);
-	}
-
-	public PriorityHeap(int initSize) {
-		if (initSize <= 0) {
-			initSize = 64;
-		}
-		this.arr = new int[initSize];
-		this.size = 0;
-	}
-
-	// ------------------------------ Public methods
-
-	public int max() {
-		return this.arr[0];
-	}
-
-	public int maxAndRemove() {
-		int t = max();
-
-		this.arr[0] = this.arr[--size];
-		sink(0);
-		return t;
-	}
-
-	public void add(int data) {
-		resize(1);
-		this.arr[size++] = data;
-		pop(size - 1);
-	}
-
-	// ------------------------------ Private methods
-
-	/**
-	 * keyÏÂ³Á·½·¨
-	 */
-	private void sink(int i) {
-		while (2 * i <= this.size - 1) {
-			int child = 2 * i;
-			if (child < this.size - 1 && this.arr[child] < this.arr[child + 1]) {
-				child++;
-			}
-			if (this.arr[i] >= this.arr[child]) {
-				break;
-			}
-
-			swap(i, child);
-			i = child;
-		}
-	}
-
-	/**
-	 * keyÉÏ¸¡·½·¨
-	 */
-	private void pop(int i) {
-		while (i > 0) {
-			int parent = i / 2;
-			if (this.arr[i] <= this.arr[parent]) {
-				break;
-			}
-			swap(i, parent);
-			i = parent;
-		}
-	}
-
-	/**
-	 * ÖØÐÂµ÷ÕûÊý×é´óÐ¡
-	 */
-	private void resize(int increaseSize) {
-		if ((this.size + increaseSize) > this.arr.length) {
-			int newSize = (this.size + increaseSize) > 2 * this.arr.length ? (this.size + increaseSize)
-					: 2 * this.arr.length;
-			int[] t = this.arr;
-
-			this.arr = Arrays.copyOf(t, newSize);
-		}
-	}
-
-	/**
-	 * Swaps arr[a] with arr[b].
-	 */
-	private void swap(int a, int b) {
-		int t = this.arr[a];
-		this.arr[a] = this.arr[b];
-		this.arr[b] = t;
-	}
-}
+//package com.algs4.priorityqueue;
+//
+//import java.util.Arrays;
+//
+///**
+// * ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½à£¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð£ï¿½
+// * @author http://www.cnblogs.com/luoxn28/p/5616101.html
+// * @date 2017ï¿½ï¿½10ï¿½ï¿½22ï¿½ï¿½
+// * @time ï¿½ï¿½ï¿½ï¿½10:40:22
+// */
+//public class PriorityHeap {
+//
+//	// ------------------------------ Instance Variables
+//
+//	private int[] arr;
+//	private int size;
+//
+//	// ------------------------------ Constructors
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï´ï¿½Ð¡Îª64
+//	 */
+//	public PriorityHeap() {
+//		this(64);
+//	}
+//
+//	public PriorityHeap(int initSize) {
+//		if (initSize <= 0) {
+//			initSize = 64;
+//		}
+//		this.arr = new int[initSize];
+//		this.size = 0;
+//	}
+//
+//	// ------------------------------ Public methods
+//
+//	public int max() {
+//		return this.arr[0];
+//	}
+//
+//	public int maxAndRemove() {
+//		int t = max();
+//
+//		this.arr[0] = this.arr[--size];
+//		sink(0);
+//		return t;
+//	}
+//
+//	public void add(int data) {
+//		resize(1);
+//		this.arr[size++] = data;
+//		pop(size - 1);
+//	}
+//
+//	// ------------------------------ Private methods
+//
+//	/**
+//	 * keyï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½
+//	 */
+//	private void sink(int i) {
+//		while (2 * i <= this.size - 1) {
+//			int child = 2 * i;
+//			if (child < this.size - 1 && this.arr[child] < this.arr[child + 1]) {
+//				child++;
+//			}
+//			if (this.arr[i] >= this.arr[child]) {
+//				break;
+//			}
+//
+//			swap(i, child);
+//			i = child;
+//		}
+//	}
+//
+//	/**
+//	 * keyï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½
+//	 */
+//	private void pop(int i) {
+//		while (i > 0) {
+//			int parent = i / 2;
+//			if (this.arr[i] <= this.arr[parent]) {
+//				break;
+//			}
+//			swap(i, parent);
+//			i = parent;
+//		}
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
+//	 */
+//	private void resize(int increaseSize) {
+//		if ((this.size + increaseSize) > this.arr.length) {
+//			int newSize = (this.size + increaseSize) > 2 * this.arr.length ? (this.size + increaseSize)
+//					: 2 * this.arr.length;
+//			int[] t = this.arr;
+//
+//			this.arr = Arrays.copyOf(t, newSize);
+//		}
+//	}
+//
+//	/**
+//	 * Swaps arr[a] with arr[b].
+//	 */
+//	private void swap(int a, int b) {
+//		int t = this.arr[a];
+//		this.arr[a] = this.arr[b];
+//		this.arr[b] = t;
+//	}
+//}

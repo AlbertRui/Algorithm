@@ -1,128 +1,128 @@
-package com.algs4.priorityqueue;
-
-/**
- * »ùÓÚ¶þ²æ¶ÑµÄÓÅÏÈ¶ÓÁÐ£¬¸ù½ÚµãµÄÖµ×î´ó
- * 
- * @author ZhangRui
- * @date 2017Äê10ÔÂ23ÈÕ
- * @time ÏÂÎç8:40:55
- * @param <Key>
- */
-public class PriorityQueue<Key extends Comparable<Key>> {
-
-	private Key[] pq;
-	private int size;
-
-	/**
-	 * ´´½¨Ò»¸öÓÅÏÈ¶ÓÁÐ£¬Ä¬ÈÏ³õÊ¼ÈÝÁ¿Îª1
-	 */
-	public PriorityQueue() {
-		this(1);
-	}
-
-	/**
-	 * ´´½¨Ò»¸öÈÝÁ¿ÎªmaxSizeµÄÓÅÏÈ¶ÓÁÐ,¶þ²æ¶ÑÊµÏÖ
-	 * 
-	 * @param maxSize
-	 */
-	@SuppressWarnings("unchecked")
-	public PriorityQueue(int maxSize) {
-		pq = (Key[]) new Object[maxSize + 1];
-		size = 0;
-	}
-
-	/**
-	 * ·µ»Ø¶ÓÁÐÊÇ·ñÎª¿Õ
-	 * 
-	 * @return
-	 */
-	public boolean isEmpty() {
-		return size == 0;
-	}
-
-	/**
-	 * ·µ»ØÓÅÏÈ¶ÓÁÐÖÐµÄÔªËØ¸öÊý
-	 * 
-	 * @return
-	 */
-	public int size() {
-		return size;
-	}
-
-	/**
-	 * ÏòÓÅÏÈ¶ÓÁÐÖÐ²åÈëÔªËØ£¬Ä¬ÈÏÔÚ×îÓÒ±ßµÄº¢×Ó²åÈë
-	 * 
-	 * @param v
-	 */
-	public void insert(Key v) {
-		pq[++size] = v;
-		swim(size);
-	}
-
-	/**
-	 * É¾³ý²¢·µ»Ø×î´óÔªËØ
-	 * 
-	 * @return
-	 */
-	public Key delMax() {
-		Key max = pq[1];
-		exch(1, size--);
-		pq[size + 1] = null;
-		sink(1);
-		return max;
-	}
-
-	/**
-	 * ÔªËØÏÂ³Á
-	 * 
-	 * @param k
-	 */
-	private void sink(int k) {
-		while (2 * k <= size) {
-			int j = 2 * k;
-			if (j < size && less(j, j + 1)) {
-				j++;
-			}
-			if (!less(k, j)) {
-				break;
-			}
-			exch(k, j);
-			k = j;
-		}
-	}
-
-	/**
-	 * ÔªËØÉÏ¸¡
-	 * 
-	 * @param k
-	 */
-	private void swim(int k) {
-		while (k > 1 && less(k / 2, k)) {
-			exch(k / 2, k);
-			k = k / 2;
-		}
-	}
-
-	/**
-	 * ½»»»ÏÂ±í·Ö±ðÊÇi£¬jµÄÔªËØ
-	 * 
-	 * @param i
-	 * @param j
-	 */
-	private void exch(int i, int j) {
-		Key temp = pq[i];
-		pq[i] = pq[j];
-		pq[j] = temp;
-	}
-
-	/**
-	 * ±È½ÏÁ½¸öÔªËØµÄ´óÐ¡
-	 * 
-	 * @param i
-	 * @param j
-	 * @return
-	 */
-	private boolean less(int i, int j) {
-		return pq[i].compareTo(pq[j]) < 0;
-	}
-}
+//package com.algs4.priorityqueue;
+//
+///**
+// * ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Öµï¿½ï¿½ï¿½
+// *
+// * @author ZhangRui
+// * @date 2017ï¿½ï¿½10ï¿½ï¿½23ï¿½ï¿½
+// * @time ï¿½ï¿½ï¿½ï¿½8:40:55
+// * @param <Key>
+// */
+//public class PriorityQueue<Key extends Comparable<Key>> {
+//
+//	private Key[] pq;
+//	private int size;
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð£ï¿½Ä¬ï¿½Ï³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Îª1
+//	 */
+//	public PriorityQueue() {
+//		this(1);
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªmaxSizeï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+//	 *
+//	 * @param maxSize
+//	 */
+//	@SuppressWarnings("unchecked")
+//	public PriorityQueue(int maxSize) {
+//		pq = (Key[]) new Object[maxSize + 1];
+//		size = 0;
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
+//	 *
+//	 * @return
+//	 */
+//	public boolean isEmpty() {
+//		return size == 0;
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ôªï¿½Ø¸ï¿½ï¿½ï¿½
+//	 *
+//	 * @return
+//	 */
+//	public int size() {
+//		return size;
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò±ßµÄºï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+//	 *
+//	 * @param v
+//	 */
+//	public void insert(Key v) {
+//		pq[++size] = v;
+//		swim(size);
+//	}
+//
+//	/**
+//	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+//	 *
+//	 * @return
+//	 */
+//	public Key delMax() {
+//		Key max = pq[1];
+//		exch(1, size--);
+//		pq[size + 1] = null;
+//		sink(1);
+//		return max;
+//	}
+//
+//	/**
+//	 * Ôªï¿½ï¿½ï¿½Â³ï¿½
+//	 *
+//	 * @param k
+//	 */
+//	private void sink(int k) {
+//		while (2 * k <= size) {
+//			int j = 2 * k;
+//			if (j < size && less(j, j + 1)) {
+//				j++;
+//			}
+//			if (!less(k, j)) {
+//				break;
+//			}
+//			exch(k, j);
+//			k = j;
+//		}
+//	}
+//
+//	/**
+//	 * Ôªï¿½ï¿½ï¿½Ï¸ï¿½
+//	 *
+//	 * @param k
+//	 */
+//	private void swim(int k) {
+//		while (k > 1 && less(k / 2, k)) {
+//			exch(k / 2, k);
+//			k = k / 2;
+//		}
+//	}
+//
+//	/**
+//	 * ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½Ö±ï¿½ï¿½ï¿½iï¿½ï¿½jï¿½ï¿½Ôªï¿½ï¿½
+//	 *
+//	 * @param i
+//	 * @param j
+//	 */
+//	private void exch(int i, int j) {
+//		Key temp = pq[i];
+//		pq[i] = pq[j];
+//		pq[j] = temp;
+//	}
+//
+//	/**
+//	 * ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ØµÄ´ï¿½Ð¡
+//	 *
+//	 * @param i
+//	 * @param j
+//	 * @return
+//	 */
+//	private boolean less(int i, int j) {
+//		return pq[i].compareTo(pq[j]) < 0;
+//	}
+//}

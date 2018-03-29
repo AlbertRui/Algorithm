@@ -11,7 +11,7 @@ public class BubbleSort {
      *
      * @param num
      */
-    public void bubbleSort1(char[] num) {
+    public static void bubbleSort1(char[] num) {
         System.out.println("==========经典冒泡排序法，升序============");
         char temp;
         for (int i = 0; i < num.length; i++) {
@@ -31,7 +31,7 @@ public class BubbleSort {
      *
      * @param num
      */
-    public void bubbleSort2(char[] num) {
+    public static void bubbleSort2(char[] num) {
         System.out.println("=========优化的冒泡排序法，降序===========");
         char temp;
         boolean flag = true;
@@ -57,16 +57,16 @@ public class BubbleSort {
      *
      * @param num
      */
-    public void bubbleSort3(char[] num) {
+    public static <T extends Comparable<T>>void bubbleSort3(T[] num) {
         System.out.println("============最优冒泡排序法，升序===========");
         int flag = num.length;
         int k = 0;
-        char temp;
+        T temp;
         while (flag > 0) {
             k = flag;
             flag = 0;
             for (int i = 1; i < k; i++) {
-                if (num[i] < num[i - 1]) {
+                if (num[i].compareTo(num[i - 1]) < 0) {
                     temp = num[i];
                     num[i] = num[i - 1];
                     num[i - 1] = temp;

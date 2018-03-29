@@ -1,5 +1,6 @@
 package algs.main;
 
+import algs.heap.sort.HeapSort;
 import algs.util.SortTestHelper;
 
 /**
@@ -12,7 +13,16 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        char[] num = SortTestHelper.getArray();
-        SortTestHelper.printNum(num);
+//        Character[] num = SortTestHelper.getArray();
+//        SortTestHelper.printNum(num);
+//        BubbleSort.bubbleSort3(num);
+//        SortTestHelper.printNum(num);
+        // 测试排序算法辅助函数
+        int N = 20000;
+        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100000);
+//        Integer[] arr = SortTestHelper.generateNearlyOrderedArray(10000, 10);
+//        SelectionSort.sort(arr);
+        SortTestHelper.testSort(HeapSort.class, "heapSort", new Class[]{Comparable[].class}, new Object[]{arr});
+        SortTestHelper.printArrayLn(arr, 20000);
     }
 }
