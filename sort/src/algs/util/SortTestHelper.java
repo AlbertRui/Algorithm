@@ -1,5 +1,9 @@
 package algs.util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -162,6 +166,47 @@ public class SortTestHelper {
             arr[i] = arr[j];
             arr[j] = t;
         }
+    }
+
+    /**
+     * 读取文件并存入数组中
+     *
+     * @return
+     */
+    public static char[] getArray() {
+        char[] num = new char[11];
+        File file = null;
+        FileReader fileReader = null;
+        try {
+            file = new File("E:\\code\\Java\\algs4-data\\tiny.txt");
+            fileReader = new FileReader(file);
+            int i = 0;
+            int n = 0;
+            while ((n = fileReader.read()) != -1) {
+                if (((char) n != ' ') && ((char) n != '\n'))
+                    num[i++] = (char) n;
+            }
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("找不到文件！！！");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("文件读取失败！！！");
+            e.printStackTrace();
+        }
+        return num;
+    }
+
+    /**
+     * 打印数组元素
+     *
+     * @param num
+     */
+    public static void printNum(char[] num) {
+        for (char c : num) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
     }
 
 }
