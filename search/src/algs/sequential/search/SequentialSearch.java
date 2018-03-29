@@ -1,4 +1,4 @@
-package com.algs4.search;
+package algs.sequential.search;
 
 /**
  * 顺序查找，基于无序链表

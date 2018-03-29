@@ -1,4 +1,4 @@
-package search.binary;
+package algs.binary.search.util;
 
 /**
  * 二分查找法
@@ -7,7 +7,7 @@ package search.binary;
  * @date 2018-03-22 19:47
  */
 @SuppressWarnings({"javadoc", "unused"})
-public class BinarySearch<T extends Comparable<T>> {
+public class BinarySearch {
     /**
      * 二分查找，返回要查找元素的索引位置
      * 如果没有找到返回-1
@@ -16,7 +16,7 @@ public class BinarySearch<T extends Comparable<T>> {
      * @param target
      * @return
      */
-    public int binarySearch(T[] arr, T target) {
+    public static <T extends Comparable<T>> int binarySearch(T[] arr, T target) {
         int left = 0;
         int right = arr.length - 1;
         //在arr[left, right]中查找
@@ -41,7 +41,7 @@ public class BinarySearch<T extends Comparable<T>> {
      * @param target
      * @return
      */
-    public int binarySearchByRecursive(T[] arr, T target, int left, int right) {
+    public static <T extends Comparable<T>> int binarySearchByRecursive(T[] arr, T target, int left, int right) {
         if (left > right) {
             return -1;
         }

@@ -1,103 +1,177 @@
-package com.algs4.search;
+package algs.binary.search;
+
+import java.util.NoSuchElementException;
 
 /**
- * ¶ş·Ö²éÕÒ£¬»ùÓÚÓĞĞòÊı×é
- * 
- * @author ZhangRui
- * @date 2017Äê10ÔÂ25ÈÕ
- * @time ÉÏÎç11:02:12
+ * äºŒåˆ†æŸ¥æ‰¾ï¼ŒåŸºäºæœ‰åºæ•°ç»„
+ *
  * @param <Key>
  * @param <Value>
+ * @author ZhangRui
+ * @date 2017å¹´10æœˆ25æ—¥
+ * @time ä¸Šåˆ11:02:12
  */
 public class BinarySearch<Key extends Comparable<Key>, Value> {
 
-	private Key[] keys;
-	private Value[] values;
-	private int n;
+    private Key[] keys;
+    private Value[] values;
+    private int n;
 
-	/**
-	 * ³õÊ¼»¯keysºÍvalues;
-	 * 
-	 * @param capacity
-	 */
-	@SuppressWarnings("unchecked")
-	public BinarySearch(int capacity) {
-		keys = (Key[]) new Comparable[capacity];
-		values = (Value[]) new Object[capacity];
-	}
+    /**
+     * åˆå§‹åŒ–keyså’Œvalues;
+     *
+     * @param capacity
+     */
+    @SuppressWarnings("unchecked")
+    public BinarySearch(int capacity) {
+        keys = (Key[]) new Comparable[capacity];
+        values = (Value[]) new Object[capacity];
+    }
 
-	/**
-	 * »ñÈ¡Êı×é³¤¶È
-	 * 
-	 * @return
-	 */
-	public int size() {
-		return n;
-	}
+    /**
+     * è·å–æ•°ç»„é•¿åº¦
+     *
+     * @return
+     */
+    public int size() {
+        return n;
+    }
 
-	/**
-	 * »ñÈ¡¼üËù¶ÔÓ¦µÄÖµ
-	 * 
-	 * @param key
-	 * @return
-	 */
-	public Value get(Key key) {
-		if (isEmpty())
-			return null;
-		int i = rank(key);
-		if (i < n && keys[i].compareTo(key) == 0)
-			return values[i];
-		return null;
-	}
+    /**
+     * è·å–é”®æ‰€å¯¹åº”çš„å€¼
+     *
+     * @param key
+     * @return
+     */
+    public Value get(Key key) {
+        if (isEmpty())
+            return null;
+        int i = rank(key);
+        if (i < n && keys[i].compareTo(key) == 0)
+            return values[i];
+        return null;
+    }
 
-	/**
-	 * ²éÕÒ¼ü£¬ÕÒµ½Ôò¸üĞÂÆäÖµ£¬·ñÔò´´½¨ĞÂµÄÔªËØ
-	 * 
-	 * @param key
-	 * @param value
-	 */
-	public void put(Key key, Value value) {
-		int i = rank(key);
-		if (i < n && keys[i].compareTo(key) == 0) {
-			values[i] = value;
-			return;
-		}
-		for (int j = n; j > i; j--) {
-			keys[j] = keys[j - 1];
-			values[j] = values[j - 1];
-		}
-		keys[i] = key;
-		values[i] = value;
-		n++;
-	}
+    /**
+     * é”®keyæ˜¯å¦å­˜åœ¨äºè¡¨ä¸­
+     *
+     * @param key
+     * @return
+     */
+    public boolean contains(Key key) {
+        return get(key) != null;
+    }
 
-	/**
-	 * »ùÓÚÓĞĞòÊı×éµÄ¶ş·Ö²éÕÒ
-	 * 
-	 * @param key
-	 * @return
-	 */
-	private int rank(Key key) {
-		int low = 0, high = n - 1;
-		while (low <= high) {
-			int mid = low + (high - low) / 2;
-			int cmp = key.compareTo(keys[mid]);
-			if (cmp < 0)
-				high = mid - 1;
-			else if (cmp > 0)
-				low = mid + 1;
-			else
-				return mid;
-		}
-		return low;
-	}
+    /**
+     * æŸ¥æ‰¾é”®ï¼Œæ‰¾åˆ°åˆ™æ›´æ–°å…¶å€¼ï¼Œå¦åˆ™åˆ›å»ºæ–°çš„å…ƒç´ 
+     *
+     * @param key
+     * @param value
+     */
+    public void put(Key key, Value value) {
+        int i = rank(key);
+        if (i < n && keys[i].compareTo(key) == 0) {
+            values[i] = value;
+            return;
+        }
+        for (int j = n; j > i; j--) {
+            keys[j] = keys[j - 1];
+            values[j] = values[j - 1];
+        }
+        keys[i] = key;
+        values[i] = value;
+        n++;
+    }
 
-	/**
-	 * ÅĞ¿Õ
-	 * 
-	 * @return
-	 */
-	private boolean isEmpty() {
-		return size() == 0;
-	}
+    /**
+     * åŸºäºæœ‰åºæ•°ç»„çš„äºŒåˆ†æŸ¥æ‰¾
+     *
+     * @param key
+     * @return
+     */
+    private int rank(Key key) {
+        int low = 0, high = n - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int cmp = key.compareTo(keys[mid]);
+            if (cmp < 0)
+                high = mid - 1;
+            else if (cmp > 0)
+                low = mid + 1;
+            else
+                return mid;
+        }
+        return low;
+    }
+
+    public Key min() {
+        if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
+        return keys[0];
+    }
+
+    /**
+     * Returns the largest key in this symbol table.
+     *
+     * @return the largest key in this symbol table
+     * @throws NoSuchElementException if this symbol table is empty
+     */
+    public Key max() {
+        if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
+        return keys[n-1];
+    }
+
+    /**
+     * Return the kth smallest key in this symbol table.
+     *
+     * @param  k the order statistic
+     * @return the {@code k}th smallest key in this symbol table
+     * @throws IllegalArgumentException unless {@code k} is between 0 and
+     *        <em>n</em>Ã¢â‚¬â€œ1
+     */
+    public Key select(int k) {
+        if (k < 0 || k >= size()) {
+            throw new IllegalArgumentException("called select() with invalid argument: " + k);
+        }
+        return keys[k];
+    }
+
+    /**
+     * Returns the largest key in this symbol table less than or equal to {@code key}.
+     *
+     * @param  key the key
+     * @return the largest key in this symbol table less than or equal to {@code key}
+     * @throws NoSuchElementException if there is no such key
+     * @throws IllegalArgumentException if {@code key} is {@code null}
+     */
+    public Key floor(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to floor() is null");
+        int i = rank(key);
+        if (i < n && key.compareTo(keys[i]) == 0) return keys[i];
+        if (i == 0) return null;
+        else return keys[i-1];
+    }
+
+    /**
+     * Returns the smallest key in this symbol table greater than or equal to {@code key}.
+     *
+     * @param  key the key
+     * @return the smallest key in this symbol table greater than or equal to {@code key}
+     * @throws NoSuchElementException if there is no such key
+     * @throws IllegalArgumentException if {@code key} is {@code null}
+     */
+    public Key ceiling(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
+        int i = rank(key);
+        if (i == n) return null;
+        else return keys[i];
+    }
+
+    /**
+     * åˆ¤ç©º
+     *
+     * @return
+     */
+    private boolean isEmpty() {
+        return size() == 0;
+    }
 }
