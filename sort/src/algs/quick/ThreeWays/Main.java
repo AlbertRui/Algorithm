@@ -1,6 +1,6 @@
 package algs.quick.ThreeWays;
 
-import me.util.SortTestHelper;
+import algs.util.SortTestHelper;
 
 /**
  * @author AlbertRui
