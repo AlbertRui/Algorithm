@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author AlbertRui
  * @date 2018-03-17 22:19
  */
-@SuppressWarnings({"JavaDoc", "unused"})
+@SuppressWarnings("ALL")
 public class MergeSort {
     public <T extends Comparable<T>> void mergeSort(T[] arr) {
         System.out.println("==============merge sort excution with descending order===============");

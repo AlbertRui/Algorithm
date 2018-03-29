@@ -4,7 +4,6 @@ package algs.select;
  * @author AlbertRui
  * @date 2018-03-28 22:15
  */
-@SuppressWarnings("ALL")
 public class SelectionSort {
 
     /**
@@ -51,8 +50,8 @@ public class SelectionSort {
         }
     }
 
-    private static void swap(Object[] arr, int i, int j) {
-        Object t = arr[i];
+    private static void swap(Comparable[] arr, int i, int j) {
+        Comparable t = arr[i];
         arr[i] = arr[j];
         arr[j] = t;
     }

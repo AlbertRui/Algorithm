@@ -12,7 +12,7 @@ public class ShellSort {
      * @param arr
      * @param <T>
      */
-    public <T extends Comparable<T>> void shellSort(T[] arr) {
+    public <T extends Comparable<T>> void sortByMove(T[] arr) {
 
         System.out.println("==============ShellSort use move=============");
 
@@ -42,7 +42,7 @@ public class ShellSort {
      *
      * @param <T>
      */
-    public <T extends Comparable<T>> void shellSort2(T[] arr) {
+    public <T extends Comparable<T>> void sortBySwap(T[] arr) {
 
         System.out.println("===========Shell Sort use exchange============");
 
@@ -60,7 +60,31 @@ public class ShellSort {
         }
     }
 
-    private <T extends Comparable<T>> void swap(T[] arr, int j, int i) {
+    /**
+     * 升序
+     *
+     * @param arr
+     */
+    public static <T extends Comparable<T>> void sortAdvance(T[] arr) {
+        int N = arr.length;
+        int h = 1, j;
+        while (h < N / 3) {
+            h = h * 3 + 1;
+        }
+        while (h >= 1) {
+            for (int i = h; i < N; i++) {
+                T waitInsert = arr[i];
+                for (j = i; j >= h && arr[j - h].compareTo(waitInsert) > 0; j -= h) {
+                    arr[j] = arr[j - h];
+                }
+                arr[j] = waitInsert;
+            }
+            h /= 3;
+        }
+
+    }
+
+    private static <T extends Comparable<T>> void swap(T[] arr, int j, int i) {
         T temp = arr[j];
         arr[j] = arr[i];
         arr[i] = temp;
