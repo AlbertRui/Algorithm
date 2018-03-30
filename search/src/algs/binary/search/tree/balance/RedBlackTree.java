@@ -9,6 +9,7 @@ package algs.binary.search.tree.balance;
  * @date 2017年10月27日
  * @time 下午9:31:58
  */
+@SuppressWarnings({"javadoc", "unused"})
 public class RedBlackTree<Key extends Comparable<Key>, Value> {
 
     private static final boolean RED = true;
@@ -24,12 +25,12 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
      * @time 下午9:31:38
      */
     private class Node {
-        Key key;
-        @SuppressWarnings("unused")
-        Value value;
-        Node left, right;
-        int n;
-        boolean color;
+
+        Key key;           //键
+        Value value;       //相关联的值
+        Node left, right;  //左右子树
+        int n;             //这课子树中的结点总数
+        boolean color;     //由其父节点指向他的链接的颜色
 
         /**
          * 节点构造器
@@ -67,6 +68,14 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
         root.color = BLACK;
     }
 
+    /**
+     * 在以node为根节点的树中查找key，找到则更新其值，否则为他创建一个新的结点
+     *
+     * @param node
+     * @param key
+     * @param value
+     * @return
+     */
     private Node put(Node node, Key key, Value value) {
         if (node == null) // 标准的插入操作，和父节点用红链接相连
             return new Node(key, value, 1, RED);
@@ -104,7 +113,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * 有旋转h的左链接
+     * 右旋转h的左链接
      *
      * @param h
      * @return
@@ -130,6 +139,12 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
         h.right.color = BLACK;
     }
 
+    /**
+     * 返回以node为根节点的红黑树中的节点个数
+     *
+     * @param node
+     * @return
+     */
     private int size(Node node) {
         if (node == null)
             return 0;
@@ -137,10 +152,14 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
             return node.n;
     }
 
+    /**
+     * 判断由其父节点指向他的链接的颜色是否是为红色
+     *
+     * @param node
+     * @return
+     */
     private boolean isRed(Node node) {
-        if (node == null)
-            return false;
-        return node.color == RED;
+        return node != null && node.color == RED;
     }
 
 }
