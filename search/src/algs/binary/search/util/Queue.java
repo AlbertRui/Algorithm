@@ -1,4 +1,4 @@
-package algs.queue.list;
+package algs.binary.search.util;
 
 import java.util.Iterator;
 

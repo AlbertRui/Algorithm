@@ -22,6 +22,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
      * @time 下午1:02:23
      */
     private class Node {
+
         private Key key; // 键
         private Value value; // 值
         private Node left, right; // 指向子树的链接
