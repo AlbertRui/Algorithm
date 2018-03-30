@@ -117,16 +117,16 @@ public class BinarySearch<Key extends Comparable<Key>, Value> {
      */
     public Key max() {
         if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
-        return keys[n-1];
+        return keys[n - 1];
     }
 
     /**
      * Return the kth smallest key in this symbol table.
      *
-     * @param  k the order statistic
+     * @param k the order statistic
      * @return the {@code k}th smallest key in this symbol table
      * @throws IllegalArgumentException unless {@code k} is between 0 and
-     *        <em>n</em>â€“1
+     *                                  <em>n</em>â€“1
      */
     public Key select(int k) {
         if (k < 0 || k >= size()) {
@@ -138,9 +138,9 @@ public class BinarySearch<Key extends Comparable<Key>, Value> {
     /**
      * Returns the largest key in this symbol table less than or equal to {@code key}.
      *
-     * @param  key the key
+     * @param key the key
      * @return the largest key in this symbol table less than or equal to {@code key}
-     * @throws NoSuchElementException if there is no such key
+     * @throws NoSuchElementException   if there is no such key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key floor(Key key) {
@@ -148,15 +148,15 @@ public class BinarySearch<Key extends Comparable<Key>, Value> {
         int i = rank(key);
         if (i < n && key.compareTo(keys[i]) == 0) return keys[i];
         if (i == 0) return null;
-        else return keys[i-1];
+        else return keys[i - 1];
     }
 
     /**
      * Returns the smallest key in this symbol table greater than or equal to {@code key}.
      *
-     * @param  key the key
+     * @param key the key
      * @return the smallest key in this symbol table greater than or equal to {@code key}
-     * @throws NoSuchElementException if there is no such key
+     * @throws NoSuchElementException   if there is no such key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key ceiling(Key key) {
