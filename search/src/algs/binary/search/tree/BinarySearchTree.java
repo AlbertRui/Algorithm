@@ -61,6 +61,16 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * 查找二叉树中是否包含key的节点
+     *
+     * @param key
+     * @return
+     */
+    public boolean contain(Key key) {
+        return contain(root, key);
+    }
+
+    /**
      * 查找键，找到则更新值，否则创建新元素
      *
      * @param key
@@ -155,6 +165,27 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
      */
     public void delete(Key key) {
         root = delete(root, key);
+    }
+
+    /**
+     * 前序遍历
+     */
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    /**
+     * 中序遍历
+     */
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    /**
+     * 后序遍历
+     */
+    public void postOrder() {
+        postOrder(root);
     }
 
     /*============================private method=================================*/
@@ -360,6 +391,29 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * 查找以node为根的节点是否包含键为key的节点
+     * 和get方法相类似
+     *
+     * @param node
+     * @param key
+     * @return
+     */
+    private boolean contain(Node node, Key key) {
+        //递归到底的情况处理
+        if (node == null) {
+            return false;
+        }
+        int cmp = key.compareTo(node.key);
+        if (cmp == 0) {
+            return true;
+        } else if (cmp < 0) {
+            return contain(node.left, key);
+        } else {
+            return contain(node.right, key);
+        }
+    }
+
+    /**
      * 如果key存在于以node为根节点的子树中则更新它的值 否则将以key和value为键值对的新结点插入到该子树中
      *
      * @param node
@@ -379,6 +433,45 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
             node.value = value;
         node.n = size(node.left) + size(node.right) + 1;
         return node;
+    }
+
+    /**
+     * 对以node为根节点的树进行前序遍历
+     *
+     * @param node
+     */
+    private void preOrder(Node node) {
+        if (node != null) {
+            System.out.println(node.value);
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+
+    /**
+     * 对以node为根节点的树进行中序遍历
+     *
+     * @param node
+     */
+    private void inOrder(Node node) {
+        if (node != null) {
+            inOrder(node.left);
+            System.out.println(node.value);
+            inOrder(node.right);
+        }
+    }
+
+    /**
+     * 对以node为根节点的树进行后序遍历
+     *
+     * @param node
+     */
+    private void postOrder(Node node) {
+        if (node != null) {
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.println(node.value);
+        }
     }
 
 }
