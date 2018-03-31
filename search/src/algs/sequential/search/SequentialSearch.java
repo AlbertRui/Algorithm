@@ -13,6 +13,7 @@ import algs.binary.search.util.Queue;
  */
 public class SequentialSearch<Key, Value> {
 
+    private int n;//顺序表中键值对的个数
     private Node first; //链表首节点
 
     /**
@@ -32,6 +33,28 @@ public class SequentialSearch<Key, Value> {
             this.value = value;
             this.next = next;
         }
+    }
+
+    /**
+     * 返回顺序表中键值对的个数
+     *
+     * @return
+     */
+    public int size() {
+        return n;
+    }
+
+    /**
+     * 判空
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    public boolean contains(Key key) {
+        return getValue(key) != null;
     }
 
     /**
@@ -62,13 +85,38 @@ public class SequentialSearch<Key, Value> {
             }
         }
         first = new Node(key, value, first);
+        n++;
     }
 
-    public Iterable<Key> keys()  {
+    public Iterable<Key> keys() {
         Queue<Key> queue = new Queue<Key>();
         for (Node x = first; x != null; x = x.next)
             queue.enqueue(x.key);
         return queue;
+    }
+
+    /**
+     * Removes the specified key and its associated value from this symbol table
+     * (if the key is in this symbol table).
+     *
+     * @param key the key
+     * @throws IllegalArgumentException if {@code key} is {@code null}
+     */
+    public void delete(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
+        first = delete(first, key);
+    }
+
+    // delete key in linked list beginning at Node x
+    // warning: function call stack too large if table is large
+    private Node delete(Node x, Key key) {
+        if (x == null) return null;
+        if (key.equals(x.key)) {
+            n--;
+            return x.next;
+        }
+        x.next = delete(x.next, key);
+        return x;
     }
 
 }
