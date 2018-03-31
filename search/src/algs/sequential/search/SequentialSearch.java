@@ -1,5 +1,7 @@
 package algs.sequential.search;
 
+import algs.binary.search.util.Queue;
+
 /**
  * 顺序查找，基于无序链表
  *
@@ -61,4 +63,12 @@ public class SequentialSearch<Key, Value> {
         }
         first = new Node(key, value, first);
     }
+
+    public Iterable<Key> keys()  {
+        Queue<Key> queue = new Queue<Key>();
+        for (Node x = first; x != null; x = x.next)
+            queue.enqueue(x.key);
+        return queue;
+    }
+
 }
