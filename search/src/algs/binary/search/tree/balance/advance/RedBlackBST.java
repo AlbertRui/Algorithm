@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
+ * https://panjunwen.com/red-black-tree-deletion/#
+ * https://www.jianshu.com/p/48331a5a11f4
  * 红黑二叉查找树完整实现
  *
  * @author Robert Sedgewick
@@ -173,20 +175,28 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     public void deleteMin() {
         if (isEmpty()) throw new NoSuchElementException("BST underflow");
 
-        // if both children of root are black, set root to red
+        /*
+         * if both children of root are black, set root to red
+         * 若果当前节点的两个子节点都是2-节点
+         * 对于根节点需要留意下，在实际红黑树操作中如果根节点的左右结点都是黑链接，
+         * 我们把指向根节点的链接『假装』成红色，也就是假装根节点的键在3-结点中。
+         */
         if (!isRed(root.left) && !isRed(root.right))
             root.color = RED;
 
         root = deleteMin(root);
+        //红黑树的根节点不允许是3-节点
         if (!isEmpty()) root.color = BLACK;
         // assert check();
     }
 
     // delete the key-value pair with the minimum key rooted at h
     private Node deleteMin(Node h) {
-        if (h.left == null)
-            return null;
 
+        //这里不同于普通二叉搜索树中的return h.right,因为当红黑树的左子节点为空时，右子节点必然为空
+        if (h.left == null)
+            return null;//在普通二叉搜索树的delMin方法中，这里为return h.right
+        //如果当前结点是2-结点，并且它的左孩子也是2-结点，需要调整（这里不要判断右孩子的原因是，红黑二叉树已经保证右孩子是2-节点）
         if (!isRed(h.left) && !isRed(h.left.left))
             h = moveRedLeft(h);
 
@@ -321,8 +331,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     private Node moveRedLeft(Node h) {
         // assert (h != null);
         // assert isRed(h) && !isRed(h.left) && !isRed(h.left.left);
-
+        //融合当前结点，左孩子，右孩子为新的4-结点
         flipColors(h);
+        //如果右孩子是3-结点，这个时候需要上述的借键给左孩子
         if (isRed(h.right.left)) {
             h.right = rotateRight(h.right);
             h = rotateLeft(h);
@@ -347,9 +358,11 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     // restore red-black tree invariant
     private Node balance(Node h) {
         // assert (h != null);
-
+        //右斜红链接调整
         if (isRed(h.right)) h = rotateLeft(h);
+        //连续的红链接调整
         if (isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
+        //4-结点调整
         if (isRed(h.left) && isRed(h.right)) flipColors(h);
 
         h.size = size(h.left) + size(h.right) + 1;
