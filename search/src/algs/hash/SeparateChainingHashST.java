@@ -4,6 +4,8 @@ import algs.binary.search.util.Queue;
 import algs.sequential.search.SequentialSearch;
 
 /**
+ * 基于拉链法的散列表
+ *
  * @author AlbertRui
  * @date 2018-03-31 20:00
  */
@@ -38,9 +40,9 @@ public class SeparateChainingHashST<Key, Value> {
     /**
      * Returns true if this symbol table contains the specified key.
      *
-     * @param  key the key
+     * @param key the key
      * @return {@code true} if this symbol table contains {@code key};
-     *         {@code false} otherwise
+     * {@code false} otherwise
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
@@ -54,8 +56,8 @@ public class SeparateChainingHashST<Key, Value> {
      * Deletes the specified key (and its associated value) from this symbol table
      * if the specified value is {@code null}.
      *
-     * @param  key the key
-     * @param  val the value
+     * @param key the key
+     * @param val the value
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
@@ -66,7 +68,7 @@ public class SeparateChainingHashST<Key, Value> {
         }
 
         // double table size if average length of list >= 10
-        if (N >= 10*M) resize(2*M);
+        if (N >= 10 * M) resize(2 * M);
 
         int i = hash(key);
         if (!st[i].contains(key)) N++;
@@ -77,7 +79,7 @@ public class SeparateChainingHashST<Key, Value> {
      * Removes the specified key and its associated value from this symbol table
      * (if the key is in this symbol table).
      *
-     * @param  key the key
+     * @param key the key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
@@ -88,7 +90,7 @@ public class SeparateChainingHashST<Key, Value> {
         st[i].delete(key);
 
         // halve table size if average length of list <= 2
-        if (M > INIT_CAPACITY && N <= 2*M) resize(M/2);
+        if (M > INIT_CAPACITY && N <= 2 * M) resize(M / 2);
     }
 
     // resize the hash table to have the given number of chains,
@@ -100,8 +102,8 @@ public class SeparateChainingHashST<Key, Value> {
                 temp.put(key, st[i].getValue(key));
             }
         }
-        this.M  = temp.M;
-        this.N  = temp.N;
+        this.M = temp.M;
+        this.N = temp.N;
         this.st = temp.st;
     }
 
