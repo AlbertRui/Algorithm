@@ -1,4 +1,4 @@
-package algs.analysis;
+package example.analysis;
 
 /**
  * 测试

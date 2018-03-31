@@ -57,7 +57,7 @@ public class BubbleSort {
      *
      * @param num
      */
-    public static <T extends Comparable<T>>void bubbleSort3(T[] num) {
+    public static <T extends Comparable<T>> void bubbleSort3(T[] num) {
         System.out.println("============最优冒泡排序法，升序===========");
         int flag = num.length;
         int k = 0;

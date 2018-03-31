@@ -1,11 +1,11 @@
-package com.algs4.graph;
+package algs.undirect;
 
 /**
- * Éî¶ÈÓÅÏÈËÑË÷
- * 
+ * æ·±åº¦ä¼˜å…ˆæœç´¢
+ *
  * @author ZhangRui
- * @date 2017Äê10ÔÂ28ÈÕ
- * @time ÏÂÎç10:59:01
+ * @date 2017å¹´10æœˆ28æ—¥
+ * @time ä¸‹åˆ10:59:01
  */
 public class DepthFirstSearch {
 
@@ -27,8 +27,8 @@ public class DepthFirstSearch {
 	}
 
 	/**
-	 * vºÍsÊÇÁªÍ¨µÄÂğ£¿
-	 * 
+	 * vå’Œsæ˜¯è”é€šçš„å—ï¼Ÿ
+	 *
 	 * @param w
 	 * @return
 	 */
@@ -37,8 +37,8 @@ public class DepthFirstSearch {
 	}
 
 	/**
-	 * ÓësÁªÍ¨µÄ¶¥µã×ÜÊı
-	 * 
+	 * ä¸sè”é€šçš„é¡¶ç‚¹æ€»æ•°
+	 *
 	 * @return
 	 */
 	public int count() {

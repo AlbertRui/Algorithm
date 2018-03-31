@@ -1,4 +1,4 @@
-package algs.bag;
+package algs.util;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

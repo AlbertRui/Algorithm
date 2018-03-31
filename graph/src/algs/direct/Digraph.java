@@ -1,4 +1,6 @@
-package com.algs4.digraph;
+package algs.direct;
+
+import algs.util.Bag;
 
 import java.util.Scanner;
 
