@@ -1,6 +1,6 @@
 package algs.hash;
 
-import algs.binary.search.util.Queue;
+import algs.util.Queue;
 import algs.sequential.search.SequentialSearch;
 
 /**

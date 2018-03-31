@@ -2,8 +2,6 @@ package com.algs4.digraph;
 
 import java.util.Scanner;
 
-import edu.princeton.cs.algs4.Bag;
-
 /**
  * ÓĞÏòÍ¼
  * @author ZhangRui

@@ -1,6 +1,6 @@
 package algs.sequential.search;
 
-import algs.binary.search.util.Queue;
+import algs.util.Queue;
 
 /**
  * 顺序查找，基于无序链表

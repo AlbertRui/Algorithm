@@ -1,6 +1,6 @@
 package algs.binary.search.tree.balance.advance;
 
-import algs.binary.search.util.Queue;
+import algs.util.Queue;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;

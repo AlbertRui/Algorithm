@@ -1,4 +1,4 @@
-package algs.binary.search.util;
+package algs.util;
 
 /**
  * 二分查找法
