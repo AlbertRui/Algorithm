@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @date 2017年10月28日
  * @time 下午11:03:27
  */
+@SuppressWarnings("ALL")
 public class Graph {
 
     private int V; //顶点数目
@@ -22,7 +23,6 @@ public class Graph {
      *
      * @param V
      */
-    @SuppressWarnings("unchecked")
     public Graph(int V) {
         this.V = V;
         this.E = 0;
@@ -37,22 +37,25 @@ public class Graph {
      *
      * @param in
      */
-    @SuppressWarnings({"unchecked", "resource"})
     public Graph(Scanner in) {
-        System.out.println("读取v并将图初始化");
-        this.V = in.nextInt();//读取V并将图初始化
-        adj = (Bag<Integer>[]) new Bag[V];//创建领接表
-        for (int v = 0; v < V; v++) {//将所有领接表初始化为空
-            adj[v] = new Bag<Integer>();
-        }
-        System.out.println("读取E");
-        int E = in.nextInt();//读取E
-        for (int i = 0; i < E; i++) {
-            System.out.println("读取一个顶点");
-            int v = in.nextInt();//读取一个顶点
-            System.out.println("读取另一个顶点");
-            int w = in.nextInt();//读取另一个顶点
-            addEdge(v, w);//添加一条连接他们的边
+        try {
+            System.out.println("读取v并将图初始化");
+            this.V = in.nextInt();//读取V并将图初始化
+            adj = (Bag<Integer>[]) new Bag[V];//创建领接表
+            for (int v = 0; v < V; v++) {//将所有领接表初始化为空
+                adj[v] = new Bag<Integer>();
+            }
+            System.out.println("读取E");
+            int E = in.nextInt();//读取E
+            for (int i = 0; i < E; i++) {
+                System.out.println("读取一个顶点");
+                int v = in.nextInt();//读取一个顶点
+                System.out.println("读取另一个顶点");
+                int w = in.nextInt();//读取另一个顶点
+                addEdge(v, w);//添加一条连接他们的边
+            }
+        } finally {
+            in.close();
         }
     }
 
