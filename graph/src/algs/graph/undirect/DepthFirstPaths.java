@@ -1,4 +1,4 @@
-package algs.undirect;
+package algs.graph.undirect;
 
 import algs.util.Stack;
 

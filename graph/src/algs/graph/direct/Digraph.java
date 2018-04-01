@@ -1,4 +1,4 @@
-package algs.direct;
+package algs.graph.direct;
 
 import algs.util.Bag;
 

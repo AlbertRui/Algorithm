@@ -1,4 +1,4 @@
-package algs.undirect;
+package algs.graph.undirect;
 
 import algs.util.Bag;
 
@@ -97,5 +97,23 @@ public class Graph {
      */
     public Iterable<Integer> adj(int v) {
         return adj[v];
+    }
+
+    /**
+     * 图的领接表的字符表示
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        String s = V + " vertices, " + E + " edges\n";
+        for (int v = 0; v < V; v++) {
+            s += v + ": ";
+            for (int w : this.adj(v)) {
+                s += w + " ";
+            }
+            s += "\n";
+        }
+        return s;
     }
 }
