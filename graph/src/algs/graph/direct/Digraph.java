@@ -5,92 +5,99 @@ import algs.util.Bag;
 import java.util.Scanner;
 
 /**
- * ÓĞÏòÍ¼
+ * æœ‰å‘å›¾
+ *
  * @author ZhangRui
- * @date 2017Äê10ÔÂ31ÈÕ
- * @time ÏÂÎç5:40:18
+ * @date 2017å¹´10æœˆ31æ—¥
+ * @time ä¸‹åˆ5:40:18
  */
+@SuppressWarnings("ALL")
 public class Digraph {
 
-	private final int V;//¶¥µãÊıÄ¿
-	private int E;//±ßµÄÊıÄ¿
-	private Bag<Integer>[] adj;//Áì½Ó±í
-	private Scanner in = null;
-	
-	/**
-	 * ´´½¨Ò»¸öº¬ÓĞV¸ö¶¥µã£¬µ¥Ã»ÓĞ±ßµÄÓĞÏòÍ¼
-	 * @param V
-	 */
-	@SuppressWarnings("unchecked")
-	public Digraph(int V) {
-		this.V = V;
-		this.E = 0;
-		adj = (Bag<Integer>[])new Bag[V];//´´½¨Áì½Ó±í
-		for (int v = 0; v < V; v++) {//¾­ËùÓĞÁ´±í³õÊ¼»¯Îª¿Õ
-			adj[v] = new Bag<Integer>();
-		}
-	}
-	
-	/**
-	 * ÔÚÊäÈëÁ÷ÖĞ¶ÁÈ¡Ò»·ùÍ¼
-	 */
-	public Digraph() {
-		in = new Scanner(System.in);
-		this.V = in.nextInt();//¶ÁÈ¡V²¢½«Í¼³õÊ¼»¯
-		this.E = in.nextInt();//¶ÁÈ¡E
-		for (int i = 0; i < E; i++) {
-			int v = in.nextInt();
-			int w = in.nextInt();
-			addEdge(v, w);
-		}
-	}
-	
-	/**
-	 * ÏíÓĞÏòÍ¼ÖĞÌí¼ÓÒ»Ìõv¡ª¡ªwµÄ±ß
-	 * @param v
-	 * @param w
-	 */
-	public void addEdge(int v, int w) {
-		adj[v].add(w);
-		E++;
-	}
+    private final int V;//é¡¶ç‚¹æ•°ç›®
+    private int E;//è¾¹çš„æ•°ç›®
+    private Bag<Integer>[] adj;//é¢†æ¥è¡¨
+    private Scanner in = null;
 
-	/**
-	 * ÓÉvÖ¸³öµÄ±ßËùÁ¬½ÓµÄËùÓĞ¶¥µã
-	 * @param v
-	 * @return
-	 */
-	public Iterable<Integer> adj(int v) {
-		return adj[v];
-	}
-	
-	/**
-	 * ¶¥µã×ÜÊı
-	 * @return
-	 */
-	public int V() {
-		return V;
-	}
-	
-	/**
-	 * ±ßµÄ×ÜÊı
-	 * @return
-	 */
-	public int E() {
-		return E;
-	}
-	
-	/**
-	 * ¸ÃÍ¼µÄ·´ÏòÍ¼
-	 * @return
-	 */
-	public Digraph reverse() {
-		Digraph R = new Digraph(V);
-		for (int v = 0; v < V; v++) {
-			for (int w : adj[v]) {
-				R.addEdge(w, v);
-			}
-		}
-		return R;
-	}
+    /**
+     * åˆ›å»ºä¸€ä¸ªå«æœ‰Vä¸ªé¡¶ç‚¹ï¼Œå•æ²¡æœ‰è¾¹çš„æœ‰å‘å›¾
+     *
+     * @param V
+     */
+    public Digraph(int V) {
+        this.V = V;
+        this.E = 0;
+        adj = (Bag<Integer>[]) new Bag[V];//åˆ›å»ºé¢†æ¥è¡¨
+        for (int v = 0; v < V; v++) {//ç»æ‰€æœ‰é“¾è¡¨åˆå§‹åŒ–ä¸ºç©º
+            adj[v] = new Bag<Integer>();
+        }
+    }
+
+    /**
+     * åœ¨è¾“å…¥æµä¸­è¯»å–ä¸€å¹…å›¾
+     */
+    public Digraph() {
+        in = new Scanner(System.in);
+        this.V = in.nextInt();//è¯»å–Vå¹¶å°†å›¾åˆå§‹åŒ–
+        this.E = in.nextInt();//è¯»å–E
+        for (int i = 0; i < E; i++) {
+            int v = in.nextInt();
+            int w = in.nextInt();
+            addEdge(v, w);
+        }
+    }
+
+    /**
+     * äº«æœ‰å‘å›¾ä¸­æ·»åŠ ä¸€æ¡vâ€”â€”wçš„è¾¹
+     *
+     * @param v
+     * @param w
+     */
+    public void addEdge(int v, int w) {
+        adj[v].add(w);
+        E++;
+    }
+
+    /**
+     * ç”±væŒ‡å‡ºçš„è¾¹æ‰€è¿æ¥çš„æ‰€æœ‰é¡¶ç‚¹
+     *
+     * @param v
+     * @return
+     */
+    public Iterable<Integer> adj(int v) {
+        return adj[v];
+    }
+
+    /**
+     * é¡¶ç‚¹æ€»æ•°
+     *
+     * @return
+     */
+    public int V() {
+        return V;
+    }
+
+    /**
+     * è¾¹çš„æ€»æ•°
+     *
+     * @return
+     */
+    public int E() {
+        return E;
+    }
+
+    /**
+     * è¯¥å›¾çš„åå‘å›¾
+     *
+     * @return
+     */
+    public Digraph reverse() {
+        Digraph R = new Digraph(V);
+        for (int v = 0; v < V; v++) {
+            for (int w : adj[v]) {
+                R.addEdge(w, v);
+            }
+        }
+        return R;
+    }
 }
