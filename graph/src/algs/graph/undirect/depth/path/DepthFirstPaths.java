@@ -1,5 +1,6 @@
-package algs.graph.undirect;
+package algs.graph.undirect.depth.path;
 
+import algs.graph.undirect.Graph;
 import algs.util.Stack;
 
 import java.util.Scanner;
@@ -63,7 +64,7 @@ public class DepthFirstPaths {
     }
 
     public static void main(String[] args) {
-        Graph G = new Graph();
+        Graph G = new Graph(new Scanner(System.in));
         Scanner in = new Scanner(System.in);
         System.out.println("请输入起点s:");
         int s = in.nextInt();

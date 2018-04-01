@@ -1,5 +1,6 @@
-package algs.graph.undirect;
+package algs.graph.undirect.breadth.search;
 
+import algs.graph.undirect.Graph;
 import algs.util.Queue;
 import algs.util.Stack;
 
@@ -9,13 +10,13 @@ import algs.util.Stack;
  * @date 2017年10月29日
  * @time 下午12:46:13
  */
-public class BreadFirstPaths {
+public class BreadthFirstPaths {
 
 	private boolean[] marked;//到达该丁点的最短路径已知吗？
 	private int[] edgeTo;//到达该顶点的已知路径上的最后一个顶点
 	private final int s;//起点
 
-	public BreadFirstPaths(Graph G, int s) {
+	public BreadthFirstPaths(Graph G, int s) {
 		marked = new boolean[G.V()];
 		edgeTo = new int[G.V()];
 		this.s = s;

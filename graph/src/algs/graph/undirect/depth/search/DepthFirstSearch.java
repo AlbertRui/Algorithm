@@ -1,4 +1,6 @@
-package algs.graph.undirect;
+package algs.graph.undirect.depth.search;
+
+import algs.graph.undirect.Graph;
 
 /**
  * 深度优先搜索
