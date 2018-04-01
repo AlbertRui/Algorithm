@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @date 2017年10月28日
  * @time 下午11:28:55
  */
+@SuppressWarnings("ALL")
 public class DepthFirstPaths {
 
     private boolean[] marked;//这个顶点上调用过dfs了嘛
