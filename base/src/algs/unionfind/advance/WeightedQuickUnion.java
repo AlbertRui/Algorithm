@@ -1,6 +1,8 @@
 package algs.unionfind.advance;
 
 /**
+ * 加权quick-union算法
+ *
  * @author AlbertRui
  * @date 2018-03-28 21:35
  */
