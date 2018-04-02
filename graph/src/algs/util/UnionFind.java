@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac UF.java
- *  Execution:    java UF < input.txt
+ *  Compilation:  javac UnionFind.java
+ *  Execution:    java UnionFind < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/15uf/tinyUF.txt
  *                http://algs4.cs.princeton.edu/15uf/mediumUF.txt
@@ -8,7 +8,7 @@
  *
  *  Weighted quick-union by rank with path compression by halving.
  *
- *  % java UF < tinyUF.txt
+ *  % java UnionFind < tinyUF.txt
  *  4 3
  *  3 8
  *  6 5
@@ -27,7 +27,7 @@ package algs.util;
 import java.util.Scanner;
 
 /**
- * The {@code UF} class represents a <em>union–find data type</em>
+ * The {@code UnionFind} class represents a <em>union–find data type</em>
  * (also known as the <em>disjoint-sets data type</em>).
  * It supports the <em>union</em> and <em>find</em> operations,
  * along with a <em>connected</em> operation for determining whether
@@ -95,7 +95,7 @@ import java.util.Scanner;
  * @author Kevin Wayne
  */
 
-public class UF {
+public class UnionFind {
 
     private int[] parent;  // parent[i] = parent of i
     private byte[] rank;   // rank[i] = rank of subtree rooted at i (never more than 31)
@@ -109,7 +109,7 @@ public class UF {
      * @param n the number of sites
      * @throws IllegalArgumentException if {@code n < 0}
      */
-    public UF(int n) {
+    public UnionFind(int n) {
         if (n < 0) throw new IllegalArgumentException();
         count = n;
         parent = new int[n];
@@ -203,15 +203,15 @@ public class UF {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        UF uf = new UF(n);
+        UnionFind unionFind = new UnionFind(n);
         while (scanner.hasNextInt()) {
             int p = scanner.nextInt();
             int q = scanner.nextInt();
-            if (uf.connected(p, q)) continue;
-            uf.union(p, q);
+            if (unionFind.connected(p, q)) continue;
+            unionFind.union(p, q);
             System.out.println(p + " " + q);
         }
-        System.out.println(uf.count() + " components");
+        System.out.println(unionFind.count() + " components");
     }
 }
 
