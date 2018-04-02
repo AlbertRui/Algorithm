@@ -66,4 +66,8 @@ public class LazyPrimMST {
         return mst;
     }
 
+    public double getTotalWeight() {
+        return weight;
+    }
+
 }
