@@ -1,7 +1,7 @@
 package algs.heap.priority.queue;
 
 /**
- * 基于堆的优先队列
+ * 基于最大堆的优先队列
  *
  * @param <Key>
  * @author ZhangRui
