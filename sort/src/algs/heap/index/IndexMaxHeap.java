@@ -1,4 +1,4 @@
-﻿package algs.heap.index;
+package algs.heap.index;
 
 /**
  * 普通索引堆
